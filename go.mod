@@ -1,4 +1,4 @@
-module github.com/mackee/git-credential-github-apps
+module github.com/tchssk/git-credential-github-apps
 
 go 1.13
 
