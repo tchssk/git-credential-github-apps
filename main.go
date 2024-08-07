@@ -63,6 +63,7 @@ type credentialInput struct {
 	password       string
 	wwwauthHeaders []string
 	authtype       string
+	credential     string
 }
 
 func (c *credentialInput) ReadFrom(r io.Reader) (int64, error) {
@@ -86,6 +87,8 @@ func (c *credentialInput) ReadFrom(r io.Reader) (int64, error) {
 			c.wwwauthHeaders = append(c.wwwauthHeaders, kv[1])
 		case "authtype":
 			c.authtype = kv[1]
+		case "credential":
+			c.credential = kv[1]
 		default:
 			return 0, fmt.Errorf("input text is invalid: input line=%s", text)
 		}
