@@ -7,7 +7,7 @@ import (
 	"os/exec"
 	"syscall"
 
-	"github.com/mackee/git-credential-github-apps/githubapps"
+	"github.com/tchssk/git-credential-github-apps/githubapps"
 )
 
 func main() {
