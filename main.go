@@ -66,6 +66,7 @@ type credentialInput struct {
 	credential     string
 	ephemeral      string
 	stateValues    []string
+	continu        string
 }
 
 func (c *credentialInput) ReadFrom(r io.Reader) (int64, error) {
@@ -95,6 +96,8 @@ func (c *credentialInput) ReadFrom(r io.Reader) (int64, error) {
 			c.ephemeral = kv[1]
 		case "state[]":
 			c.stateValues = append(c.stateValues, kv[1])
+		case "continue":
+			c.continu = kv[1]
 		default:
 			return 0, fmt.Errorf("input text is invalid: input line=%s", text)
 		}
