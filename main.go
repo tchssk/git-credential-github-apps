@@ -57,16 +57,17 @@ func printCredential(token string) {
 }
 
 type credentialInput struct {
-	host           string
-	protocol       string
-	username       string
-	password       string
-	wwwauthHeaders []string
-	authtype       string
-	credential     string
-	ephemeral      string
-	stateValues    []string
-	continu        string
+	host             string
+	protocol         string
+	username         string
+	password         string
+	wwwauthHeaders   []string
+	authtype         string
+	credential       string
+	ephemeral        string
+	stateValues      []string
+	continu          string
+	capabilityValues []string
 }
 
 func (c *credentialInput) ReadFrom(r io.Reader) (int64, error) {
@@ -98,6 +99,8 @@ func (c *credentialInput) ReadFrom(r io.Reader) (int64, error) {
 			c.stateValues = append(c.stateValues, kv[1])
 		case "continue":
 			c.continu = kv[1]
+		case "capability[]":
+			c.capabilityValues = append(c.capabilityValues, kv[1])
 		default:
 			return 0, fmt.Errorf("input text is invalid: input line=%s", text)
 		}
